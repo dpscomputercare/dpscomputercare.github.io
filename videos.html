@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Library | DPS Computer Care</title>
+
+    <!-- FAVICON INCLUSION -->
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- MAIN NAVIGATION BAR -->
+    <nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- Brand Logo & Name -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-2 sm:gap-3">
+                        <img src="images/logo.png" alt="DPS Computer Care Logo" class="h-8 sm:h-10 w-auto object-contain bg-white/10 rounded p-1 border border-slate-700">
+                        <span class="text-lg sm:text-xl font-bold tracking-wide text-blue-500">
+                            DPS <span class="text-white">Computer Care</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-2 lg:space-x-4">
+                        <a href="index.html" class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium">HOME</a>
+
+                        <!-- SERVICES (Dropdown) -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                SERVICES <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-60 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block transition-all duration-200">
+                                <span class="block px-4 py-1 text-xs font-semibold text-gray-400 uppercase">Service Details</span>
+                                <a href="service-normal-laptop.html" class="block px-6 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Normal Laptop Full Service</a>
+                                <a href="service-gaming-laptop.html" class="block px-6 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Gaming Laptop Full Service</a>
+                                <hr class="my-1 border-gray-100">
+                                <a href="service-charges.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600 font-medium">Service Charges</a>
+                                <a href="uoj-discount.html" class="block px-6 py-2 text-sm text-amber-600 hover:bg-amber-50 font-semibold">UOJ Student Discount</a>
+                                <hr class="my-1 border-gray-100">
+                                <a href="knowledge-center.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Knowledge Center</a>
+                            </div>
+                        </div>
+
+                        <!-- INSTANT QUOTATION -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                QUOTATION <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-56 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="get-quote.html" class="block px-4 py-2 text-sm hover:bg-blue-50 text-blue-600 font-semibold">Get Quote (Calculator)</a>
+                                <a href="book-repair.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Book a Repair</a>
+                            </div>
+                        </div>
+
+                        <!-- PRODUCTS -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                PRODUCTS <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-64 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="products.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Thermal Solutions & Accessories</a>
+                            </div>
+                        </div>
+
+                        <!-- GALLERY & VIDEOS -->
+                        <div class="relative group">
+                            <button class="bg-slate-800 px-3 py-2 rounded-md text-sm font-medium text-blue-400 flex items-center gap-1">
+                                GALLERY <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-48 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="gallery.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Photo Gallery</a>
+                                <a href="videos.html" class="block px-4 py-2 text-sm bg-blue-50 text-blue-600 font-semibold">Video Library</a>
+                            </div>
+                        </div>
+
+                        <!-- ABOUT & CONTACT -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                CONTACT <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute right-0 mt-0 w-48 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="about.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">About Us</a>
+                                <a href="contact.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Contact Us</a>
+                                <a href="faq.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">FAQ</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- WhatsApp Button (Desktop) -->
+                <div class="hidden md:block">
+                    <a href="https://wa.me/94717301589" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 px-4 pt-2 pb-4 space-y-2 border-t border-slate-700">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Home</a>
+            <a href="videos.html" class="block px-3 py-2 rounded-md text-base font-medium text-blue-400 bg-slate-900">Video Library</a>
+            <a href="gallery.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Photo Gallery</a>
+            <a href="get-quote.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Instant Quotation Calculator</a>
+            <a href="uoj-discount.html" class="block px-3 py-2 rounded-md text-base font-medium text-amber-400 hover:bg-slate-700">UOJ Student Discount</a>
+            <a href="products.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Products & Thermal Solutions</a>
+            <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">About Us</a>
+            <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Contact Us</a>
+            <a href="https://wa.me/94717301589" target="_blank" class="w-full mt-2 bg-green-600 text-white px-4 py-2 rounded-md text-center font-semibold flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <header class="bg-slate-900 text-white py-12 px-4 text-center border-b border-slate-800">
+        <div class="inline-block bg-red-900/60 text-red-300 text-xs font-semibold px-3 py-1 rounded-full border border-red-700 mb-3 uppercase tracking-wider">Video Guides & Services</div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-400 mb-3">Video Library</h1>
+        <p class="text-gray-300 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
+            අපගේ YouTube චැනලයේ සේවා සපයන ආකාරය සහ Tech Guides නැරඹීමට පහත වීඩියෝ බලන්න.
+        </p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-10">
+
+        <!-- ========================================================================= -->
+        <!-- YOUTUBE VIDEO GRID (නව Videos එකතු කිරීමට පහත GRID එක ඇතුළට Copy/Paste කරන්න) -->
+        <!-- ========================================================================= -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- 🟢 YOUTUBE VIDEO ITEM START 🟢 -->
+            <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition">
+                <!-- 💡 [YOUTUBE EMBED NOTE]:
+                     YouTube Video URL එක "https://www.youtube.com/watch?v=VIDEO_ID" නම්,
+                     පහත src="" එකට "https://www.youtube.com/embed/VIDEO_ID" ලෙස ඇතුළත් කරන්න.
+                -->
+                <div class="relative aspect-video bg-black">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/cH34563M3OI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-5">
+                    <span class="text-xs bg-red-100 text-red-600 font-bold px-2.5 py-1 rounded"><i class="fa-brands fa-youtube me-1"></i> Full Service Video</span>
+                    <h3 class="font-bold text-slate-900 text-lg mt-2">ASUS Vivobook Go E1504FA Quick Service Thermal Paste Change & Cleaning</h3>
+                    <p class="text-xs text-gray-500 mt-1">
+                        ASUS Vivobook Laptop එකක Thermal Paste සහ Putty මාරු කර Service ආකාරය.
+                    </p>
+                </div>
+            </div>
+            <!-- 🔴 YOUTUBE VIDEO ITEM END 🔴 -->
+			
+			
+			            <!-- 🟢 YOUTUBE VIDEO ITEM START 🟢 -->
+            <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition">
+                <!-- 💡 [YOUTUBE EMBED NOTE]:
+                     YouTube Video URL එක "https://www.youtube.com/watch?v=VIDEO_ID" නම්,
+                     පහත src="" එකට "https://www.youtube.com/embed/VIDEO_ID" ලෙස ඇතුළත් කරන්න.
+                -->
+                <div class="relative aspect-video bg-black">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-5">
+                    <span class="text-xs bg-red-100 text-red-600 font-bold px-2.5 py-1 rounded"><i class="fa-brands fa-youtube me-1"></i> Full Service Video</span>
+                    <h3 class="font-bold text-slate-900 text-lg mt-2">Gaming Laptop Full Thermal Restoration Process</h3>
+                    <p class="text-xs text-gray-500 mt-1">
+                        අධික ලෙස රත්වන Gaming Laptop එකක Thermal Paste සහ Putty මාරු කර උෂ්ණත්වය අඩු කරන ආකාරය.
+                    </p>
+                </div>
+            </div>
+            <!-- 🔴 YOUTUBE VIDEO ITEM END 🔴 -->
+
+            <!-- 🟢 YOUTUBE VIDEO ITEM START 🟢 -->
+            <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition">
+                <div class="relative aspect-video bg-black">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-5">
+                    <span class="text-xs bg-blue-100 text-blue-600 font-bold px-2.5 py-1 rounded"><i class="fa-solid fa-graduation-cap me-1"></i> Tech Guide</span>
+                    <h3 class="font-bold text-slate-900 text-lg mt-2">Thermal Paste vs Thermal Putty Explained</h3>
+                    <p class="text-xs text-gray-500 mt-1">
+                        ඔබේ පරිගණකයට ගැලපෙනම Thermal Solution එක තෝරාගන්නේ කෙසේදැයි දැනගන්න.
+                    </p>
+                </div>
+            </div>
+            <!-- 🔴 YOUTUBE VIDEO ITEM END 🔴 -->
+
+            <!-- 💡 [INSTRUCTION FOR ADMIN/DEVELOPER]:
+                 නව VIDEO එකක් එකතු කිරීමට අවශ්‍ය වූ විට:
+                 1. උඩ ඇති "YOUTUBE VIDEO ITEM START" සිට "YOUTUBE VIDEO ITEM END" දක්වා ඇති කොටස Copy කරගන්න.
+                 2. මෙතැනට පහළින් Paste කර iframe src="" එකේ YouTube Video ID එක සහ Heading / Description වෙනස් කරන්න.
+            -->
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-gray-300 py-10 mt-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <img src="images/logo.png" alt="DPS Computer Care Logo" class="h-9 w-auto object-contain bg-white/10 rounded p-1 border border-slate-700">
+                    <h3 class="text-white font-bold text-lg tracking-wide">DPS Computer Care</h3>
+                </div>
+                <p class="text-sm text-gray-400">Professional Laptop & Computer Repair Services with Guaranteed Quality.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="get-quote.html" class="hover:text-blue-400">Get Instant Quote</a></li>
+                    <li><a href="uoj-discount.html" class="hover:text-amber-400">UOJ Student Discount</a></li>
+                    <li><a href="book-repair.html" class="hover:text-blue-400">Book Repair</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Services</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="service-normal-laptop.html" class="hover:text-blue-400">Normal Laptop Service</a></li>
+                    <li><a href="service-gaming-laptop.html" class="hover:text-blue-400">Gaming Laptop Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Contact Us</h4>
+                <p class="text-sm"><i class="fa-solid fa-location-dot me-2 text-blue-500"></i>Jaffna / Sri Lanka</p>
+                <p class="text-sm mt-2"><i class="fa-solid fa-phone me-2 text-blue-500"></i>+94 71 730 1589</p>
+                <p class="text-sm mt-2"><i class="fa-solid fa-envelope me-2 text-blue-500"></i>dpscomputercare@gmail.com</p>
+            </div>
+        </div>
+        <div class="text-center text-xs text-gray-500 mt-8 pt-4 border-t border-slate-800">
+            © 2026 DPS Computer Care. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

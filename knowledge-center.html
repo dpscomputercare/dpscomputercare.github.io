@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Center | DPS Computer Care</title>
+	
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+	
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- MAIN NAVIGATION BAR -->
+    <nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- Brand Logo & Name -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-2 sm:gap-3">
+                        <img src="images/logo.png" alt="DPS Computer Care Logo" class="h-8 sm:h-10 w-auto object-contain bg-white/10 rounded p-1 border border-slate-700">
+                        <span class="text-lg sm:text-xl font-bold tracking-wide text-blue-500">
+                            DPS <span class="text-white">Computer Care</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-2 lg:space-x-4">
+                        <a href="index.html" class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium">HOME</a>
+
+                        <!-- SERVICES (Dropdown) -->
+                        <div class="relative group">
+                            <button class="bg-slate-800 px-3 py-2 rounded-md text-sm font-medium text-blue-400 flex items-center gap-1">
+                                SERVICES <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-60 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block transition-all duration-200">
+                                <span class="block px-4 py-1 text-xs font-semibold text-gray-400 uppercase">Service Details</span>
+                                <a href="service-normal-laptop.html" class="block px-6 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Normal Laptop Full Service</a>
+                                <a href="service-gaming-laptop.html" class="block px-6 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Gaming Laptop Full Service</a>
+                                <hr class="my-1 border-gray-100">
+                                <a href="service-charges.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600 font-medium">Service Charges</a>
+                                <a href="uoj-discount.html" class="block px-6 py-2 text-sm text-amber-600 hover:bg-amber-50 font-semibold">UOJ Student Discount</a>
+                                <hr class="my-1 border-gray-100">
+                                <a href="knowledge-center.html" class="block px-4 py-2 text-sm bg-blue-50 text-blue-600 font-semibold">Knowledge Center</a>
+                            </div>
+                        </div>
+
+                        <!-- INSTANT QUOTATION -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                QUOTATION <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-56 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="get-quote.html" class="block px-4 py-2 text-sm hover:bg-blue-50 text-blue-600 font-semibold">Get Quote (Calculator)</a>
+                                <a href="book-repair.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Book a Repair</a>
+                            </div>
+                        </div>
+
+                        <!-- PRODUCTS -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                PRODUCTS <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-64 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="products.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Thermal Solutions & Accessories</a>
+                            </div>
+                        </div>
+
+                        <!-- GALLERY & VIDEOS -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                GALLERY <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-48 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="gallery.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Photo Gallery</a>
+                                <a href="videos.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Video Library</a>
+                            </div>
+                        </div>
+
+                        <!-- ABOUT & CONTACT -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                CONTACT <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute right-0 mt-0 w-48 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="about.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">About Us</a>
+                                <a href="contact.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Contact Us</a>
+                                <a href="faq.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">FAQ</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- WhatsApp Button (Desktop) -->
+                <div class="hidden md:block">
+                    <a href="https://wa.me/94717301589" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 px-4 pt-2 pb-4 space-y-2 border-t border-slate-700">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Home</a>
+            <a href="knowledge-center.html" class="block px-3 py-2 rounded-md text-base font-medium text-blue-400 bg-slate-900">Knowledge Center</a>
+            <a href="get-quote.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Instant Quotation Calculator</a>
+            <a href="uoj-discount.html" class="block px-3 py-2 rounded-md text-base font-medium text-amber-400 hover:bg-slate-700">UOJ Student Discount</a>
+            <a href="products.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Products & Thermal Solutions</a>
+            <a href="gallery.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Gallery & Videos</a>
+            <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">About Us</a>
+            <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Contact Us</a>
+            <a href="https://wa.me/94717301589" target="_blank" class="w-full mt-2 bg-green-600 text-white px-4 py-2 rounded-md text-center font-semibold flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <header class="bg-slate-900 text-white py-12 px-4 text-center border-b border-slate-800">
+        <div class="inline-block bg-blue-900/60 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full border border-blue-700 mb-3 uppercase tracking-wider">Tech Education & Guides</div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-400 mb-3">Knowledge Center</h1>
+        <p class="text-gray-300 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
+            ඔබගේ Laptop / PC එකෙහි Performance සහ Cooling තාක්ෂණය පිළිබඳ දැනුවත් වන්න. නිවැරදි Thermal Solutions තෝරාගන්නා ආකාරය ඉගෙන ගන්න.
+        </p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-10 space-y-12">
+
+        <!-- FEATURED ARTICLE: Thermal Paste vs Thermal Putty -->
+        <article class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            <div class="bg-gradient-to-r from-slate-900 to-blue-900 text-white p-6 sm:p-8">
+                <span class="bg-amber-500 text-slate-900 font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Featured Article</span>
+                <h2 class="text-2xl sm:text-3xl font-bold mt-3 mb-2 text-white">Thermal Paste සහ Thermal Putty යනු මොනවාද? ඔබගේ Laptop එකට සුදුසු කුමක්ද?</h2>
+                <p class="text-gray-300 text-xs sm:text-sm flex items-center gap-4">
+                    <span><i class="fa-regular fa-calendar me-1"></i> Updated for 2026</span>
+                    <span><i class="fa-regular fa-clock me-1"></i> 5 Min Read</span>
+                </p>
+            </div>
+
+            <div class="p-6 sm:p-8 space-y-8 text-gray-700 leading-relaxed text-sm sm:text-base">
+                
+                <!-- Section 1: Intro -->
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 border-b pb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-fire-flame-curved text-amber-500"></i> Thermal Management යනු කුමක්ද?
+                    </h3>
+                    <p>
+                        Laptop හෝ PC එකක **CPU (Central Processing Unit)** සහ **GPU (Graphics Processing Unit)** අධික ලෙස රත්වන ප්‍රධාන අංග වේ. මෙම Chips වල ඇති තාපය Heat Sink එක හරහා පිටතට යැවීමේදී, Direct Contact එක අතරතුර ඉතා කුඩා අන්වීක්ෂීය වායු හිඩැස් (Microscopic Air Gaps) ඇති වේ. වාතය යනු තාපය ගමන් කිරීමට බාධා කරන (Heat Insulator) ද්‍රව්‍යයක් බැවින්, මෙම හිඩැස් පිරවීම සඳහා **Thermal Interface Materials (TIM)** භාවිතා කරයි.
+                    </p>
+                </div>
+
+                <!-- Section 2: Thermal Paste vs Putty -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-blue-50/60 p-5 rounded-xl border border-blue-100">
+                        <h4 class="font-bold text-blue-900 text-lg mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-flask text-blue-600"></i> Thermal Paste යනු කුමක්ද?
+                        </h4>
+                        <p class="text-sm text-gray-600 mb-3">
+                            මෙය CPU සහ GPU Direct Die එක මත තවරන ද්‍රවමය පේස්ට් වර්ගයකි.
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-700">
+                            <li><strong>ප්‍රධාන භාවිතය:</strong> CPU සහ GPU Chips සඳහා පමණි.</li>
+                            <li><strong>ලක්ෂණ:</strong> ඉතා තුනී ස්ථරයක් (Thin Layer) ලෙස පැතිරී අධික තාපය සෘජුව Heat Sink වෙත ගෙනයයි.</li>
+                            <li><strong>ආදේශන කාලය:</strong> සාමාන්‍ය භාවිතයේදී වසර 1-2 කට වරක්.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-purple-50/60 p-5 rounded-xl border border-purple-100">
+                        <h4 class="font-bold text-purple-900 text-lg mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-cube text-purple-600"></i> Thermal Putty යනු කුමක්ද?
+                        </h4>
+                        <p class="text-sm text-gray-600 mb-3">
+                            මෙය VRM (Voltage Regulator Modules) සහ VRAM (Video RAM) Chips මත යොදන thick viscous material එකකි.
+                        </p>
+                        <ul class="text-xs space-y-2 text-gray-700">
+                            <li><strong>ප්‍රධාන භාවිතය:</strong> VRAM, VRM සහ Memory Components සඳහා.</li>
+                            <li><strong>ලක්ෂණ:</strong> Thermal Pad වලට වඩා හොඳින් හිඩැස් පුරවයි (Gap filling), Compressible වේ.</li>
+                            <li><strong>වාසිය:</strong> Heat Sink එක සමඟ හොඳ සපෝට් එකක් දෙමින් Pad වලට වඩා Thermal Resistance අඩු කරයි.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 3: Product Comparison Table -->
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 border-b pb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-code-compare text-blue-600"></i> DPS Computer Care හි ඇති Thermal Solutions සංසන්දනය
+                    </h3>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                            <thead>
+                                <tr class="bg-slate-900 text-white">
+                                    <th class="p-3 border-b border-slate-700">Product Name</th>
+                                    <th class="p-3 border-b border-slate-700">Type</th>
+                                    <th class="p-3 border-b border-slate-700">Thermal Conductivity</th>
+                                    <th class="p-3 border-b border-slate-700">Best Suitable For</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 bg-gray-50">
+                                <tr>
+                                    <td class="p-3 font-semibold text-gray-800">HY510</td>
+                                    <td class="p-3 text-blue-600 font-medium">Thermal Paste</td>
+                                    <td class="p-3">> 1.93 W/m-K</td>
+                                    <td class="p-3">Standard / Normal Office Laptops</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-blue-900">Arctic MX-4</td>
+                                    <td class="p-3 text-blue-600 font-medium">Thermal Paste</td>
+                                    <td class="p-3">High Performance (~8.5 W/m-K)</td>
+                                    <td class="p-3">Mid-range Gaming & High Workload Laptops</td>
+                                </tr>
+                                <tr class="bg-amber-50/50">
+                                    <td class="p-3 font-bold text-amber-900">Arctic MX-6 (Original)</td>
+                                    <td class="p-3 text-blue-600 font-medium">Thermal Paste</td>
+                                    <td class="p-3 font-bold text-amber-700">Ultra High Performance</td>
+                                    <td class="p-3 font-medium">High-end Gaming & Heavy 3D/Video Editing</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-purple-900">HY204</td>
+                                    <td class="p-3 text-purple-600 font-medium">Thermal Putty</td>
+                                    <td class="p-3">Standard Putty Grade</td>
+                                    <td class="p-3">Budget VRM/VRAM Thermal Gap Filling</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-purple-900">Zezzio ZT-PY6</td>
+                                    <td class="p-3 text-purple-600 font-medium">Thermal Putty</td>
+                                    <td class="p-3">6.0 W/m-K High Grade</td>
+                                    <td class="p-3">Gaming Laptops VRAM & Power Delivery Components</td>
+                                </tr>
+                                <tr class="bg-purple-50/50">
+                                    <td class="p-3 font-bold text-purple-900">Upsiren UTP-8</td>
+                                    <td class="p-3 text-purple-600 font-medium">Thermal Putty</td>
+                                    <td class="p-3 font-bold text-purple-700">12.8 W/m-K (Top-Tier)</td>
+                                    <td class="p-3 font-medium">Extreme Gaming Laptops (RTX 30/40 Series) VRAM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 4: Recommendation -->
+                <div class="bg-slate-900 text-white p-6 rounded-xl space-y-3">
+                    <h4 class="text-lg font-bold text-blue-400 flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-amber-400"></i> අපගේ නිර්දේශය (Our Recommendation)
+                    </h4>
+                    <p class="text-xs sm:text-sm text-gray-300">
+                        ඔබේ Laptop එක සාමාන්‍ය අධ්‍යයන හෝ කාර්යාල කටයුතු සඳහා භාවිත කරන්නේ නම් **HY510** හෝ **Arctic MX-4** ප්‍රමාණවත් වේ. නමුත් ඔබ Gaming, Video Editing හෝ 3D Software භාවිත කරන්නේ නම් CPU/GPU සඳහා **Arctic MX-6 Original** සහ VRM/VRAM සඳහා **Zezzio ZT-PY6** හෝ **Upsiren UTP-8 Thermal Putty** යෙදීමෙන් උපරිම Cooling සහ Long Lifespan ලබාගත හැක.
+                    </p>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- MORE ARTICLES SECTION (FUTURE UPDATES PLACEHOLDER) -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between">
+                <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-newspaper text-blue-600"></i> More Articles & Guides
+                </h2>
+                <span class="text-xs text-gray-500 font-semibold">More content updating soon...</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Placeholder Card 1 -->
+                <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full font-semibold">Maintenance</span>
+                        <h3 class="font-bold text-slate-900 mt-3 mb-2 hover:text-blue-600 cursor-pointer">
+                            Laptop එක Overheat වන බව දැනගන්නේ කෙසේද? (Symptoms of Overheating)
+                        </h3>
+                        <p class="text-xs text-gray-500 line-clamp-3 mb-4">
+                            Fan එක තදින් ශබ්ද වීම, Laptop එක නිතර Slow වීම හෝ Shut Down වීම සිදු වන්නේ ඇයිදැයි දැනගන්න.
+                        </p>
+                    </div>
+                    <span class="text-xs text-blue-600 font-semibold cursor-pointer">Read Article <i class="fa-solid fa-arrow-right text-xs ms-1"></i></span>
+                </div>
+
+                <!-- Placeholder Card 2 -->
+                <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full font-semibold">Hardware Upgrade</span>
+                        <h3 class="font-bold text-slate-900 mt-3 mb-2 hover:text-blue-600 cursor-pointer">
+                            SSD එකක් සහ RAM එකක් Upgrade කිරීමෙන් Performance වැඩි වන්නේ කෙසේද?
+                        </h3>
+                        <p class="text-xs text-gray-500 line-clamp-3 mb-4">
+                            පරණ Laptop එකක් නැවත අලුත් එකක් මෙන් වේගවත් කර ගැනීමට සිදුකළ හැකි හොඳම Upgrade මොනවාද?
+                        </p>
+                    </div>
+                    <span class="text-xs text-blue-600 font-semibold cursor-pointer">Read Article <i class="fa-solid fa-arrow-right text-xs ms-1"></i></span>
+                </div>
+
+                <!-- Placeholder Card 3 -->
+                <div class="bg-white rounded-xl p-5 border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <span class="text-xs bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full font-semibold">Tips & Tricks</span>
+                        <h3 class="font-bold text-slate-900 mt-3 mb-2 hover:text-blue-600 cursor-pointer">
+                            Laptop Battery Life එක වැඩි කරගන්නේ කෙසේද?
+                        </h3>
+                        <p class="text-xs text-gray-500 line-clamp-3 mb-4">
+                            නිවැරදි Charging රටාවන් සහ Windows Power Settings සකස් කර ගන්නා ආකාරය.
+                        </p>
+                    </div>
+                    <span class="text-xs text-blue-600 font-semibold cursor-pointer">Read Article <i class="fa-solid fa-arrow-right text-xs ms-1"></i></span>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-gray-300 py-10 mt-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <img src="images/logo.png" alt="DPS Computer Care Logo" class="h-9 w-auto object-contain bg-white/10 rounded p-1 border border-slate-700">
+                    <h3 class="text-white font-bold text-lg tracking-wide">DPS Computer Care</h3>
+                </div>
+                <p class="text-sm text-gray-400">Professional Laptop & Computer Repair Services with Guaranteed Quality.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="get-quote.html" class="hover:text-blue-400">Get Instant Quote</a></li>
+                    <li><a href="uoj-discount.html" class="hover:text-amber-400">UOJ Student Discount</a></li>
+                    <li><a href="book-repair.html" class="hover:text-blue-400">Book Repair</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Services</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="service-normal-laptop.html" class="hover:text-blue-400">Normal Laptop Service</a></li>
+                    <li><a href="service-gaming-laptop.html" class="hover:text-blue-400">Gaming Laptop Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Contact Us</h4>
+                <p class="text-sm"><i class="fa-solid fa-location-dot me-2 text-blue-500"></i>Jaffna / Sri Lanka</p>
+                <p class="text-sm mt-2"><i class="fa-solid fa-phone me-2 text-blue-500"></i>+94 71 730 1589</p>
+                <p class="text-sm mt-2"><i class="fa-solid fa-envelope me-2 text-blue-500"></i>dpscomputercare@gmail.com</p>
+            </div>
+        </div>
+        <div class="text-center text-xs text-gray-500 mt-8 pt-4 border-t border-slate-800">
+            © 2026 DPS Computer Care. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

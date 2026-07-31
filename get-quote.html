@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Quote Calculator | DPS Computer Care</title>
+
+    <!-- FAVICON INCLUSION -->
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- html2pdf Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+      :root {
+        --bg-dark: #121212;
+        --card-bg: #1e1e1e;
+        --card-border: #2d2d2d;
+        --accent-blue: #00d2ff;
+        --accent-green: #00e676;
+        --accent-gold: #ffd700;
+        --text-main: #e0e0e0;
+        --text-muted: #a0a0a0;
+      }
+
+      .calculator-container {
+        max-width: 750px;
+        margin: 0 auto;
+        background-color: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-top: 4px solid var(--accent-blue);
+        border-radius: 14px;
+        padding: 24px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        box-sizing: border-box;
+      }
+
+      .calc-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .calc-header h2 {
+        margin: 0 0 6px 0;
+        color: #ffffff;
+        font-size: 1.5rem;
+      }
+
+      .calc-header p {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      /* UOJ Toggle Banner */
+      .student-toggle-box {
+        background: linear-gradient(135deg, #2b1a00, #1e1e1e);
+        border: 1px solid var(--accent-gold);
+        border-radius: 10px;
+        padding: 14px 18px;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+
+      .student-toggle-box input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+        accent-color: var(--accent-gold);
+        cursor: pointer;
+      }
+
+      .student-toggle-label {
+        font-weight: bold;
+        color: var(--accent-gold);
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .section-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--accent-blue);
+        border-bottom: 1px solid var(--card-border);
+        padding-bottom: 6px;
+        margin: 20px 0 12px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* Customer Details Input */
+      .customer-input-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+
+      .customer-input-group input {
+        width: 100%;
+        padding: 10px 12px;
+        background-color: #262626;
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 0.9rem;
+        box-sizing: border-box;
+        outline: none;
+      }
+
+      .customer-input-group input:focus {
+        border-color: var(--accent-blue);
+      }
+
+      /* Item Selection Row Style */
+      .item-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #262626;
+        border: 1px solid var(--card-border);
+        padding: 12px 14px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        transition: border-color 0.2s, background 0.2s;
+        cursor: pointer;
+      }
+
+      .item-row:hover {
+        border-color: var(--accent-blue);
+      }
+
+      .item-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .item-left input[type="checkbox"],
+      .item-left input[type="radio"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--accent-blue);
+        cursor: pointer;
+      }
+
+      .item-title {
+        font-size: 0.95rem;
+        color: #ffffff;
+      }
+
+      .item-price {
+        font-weight: bold;
+        color: var(--accent-green);
+        font-size: 0.95rem;
+        white-space: nowrap;
+      }
+
+      .sub-options {
+        margin-left: 20px;
+        margin-bottom: 12px;
+        padding: 12px;
+        background-color: #1a1a1a;
+        border-radius: 8px;
+        border-left: 3px solid var(--accent-blue);
+      }
+
+      .sub-title {
+        font-size: 0.85rem;
+        color: var(--accent-gold);
+        font-weight: bold;
+        margin-bottom: 8px;
+        margin-top: 6px;
+      }
+
+      /* Summary Box */
+      .summary-box {
+        background: #141414;
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 18px;
+        margin-top: 25px;
+      }
+
+      .summary-title {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #ffffff;
+        margin-bottom: 12px;
+        border-bottom: 1px dashed var(--card-border);
+        padding-bottom: 6px;
+      }
+
+      .selected-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 15px 0;
+      }
+
+      .selected-list li {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        color: var(--text-main);
+      }
+
+      .remove-btn {
+        color: #ff5252;
+        cursor: pointer;
+        font-weight: bold;
+        margin-left: 8px;
+      }
+
+      .grand-total-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #ffffff;
+        border-top: 2px solid var(--accent-blue);
+        padding-top: 12px;
+        margin-top: 10px;
+      }
+
+      .grand-total-price {
+        color: var(--accent-green);
+        font-size: 1.6rem;
+      }
+
+      /* Action Buttons Grid */
+      .action-buttons-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .btn-action-main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 0.95rem;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+      }
+
+      .btn-download-pdf {
+        background: linear-gradient(135deg, #00d2ff, #0072ff);
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 210, 255, 0.3);
+      }
+
+      .btn-download-pdf:hover {
+        background: linear-gradient(135deg, #00a2ff, #0052cc);
+      }
+
+      .btn-book-now {
+        background: linear-gradient(135deg, #00e676, #009624);
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 230, 118, 0.3);
+      }
+
+      .btn-book-now:hover {
+        background: linear-gradient(135deg, #00c853, #007b1d);
+      }
+
+      .note-box {
+        font-size: 0.8rem;
+        color: #FBFF00;
+        margin-top: 12px;
+        line-height: 1.4;
+      }
+
+      /* PREVIEW MODAL POPUP STYLES */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 9999;
+        overflow-y: auto;
+        padding: 20px 10px;
+        box-sizing: border-box;
+      }
+
+      .modal-content {
+        background: #ffffff;
+        color: #000000;
+        max-width: 650px;
+        margin: 20px auto;
+        border-radius: 10px;
+        padding: 30px;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        font-family: Arial, sans-serif;
+      }
+
+      .modal-close-btn {
+        position: absolute;
+        top: 15px; right: 15px;
+        background: #ff4d4d;
+        color: #ffffff;
+        border: none;
+        padding: 6px 12px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+        justify-content: flex-end;
+      }
+
+      .btn-modal-action {
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-print-download {
+        background: #0072ff;
+        color: #ffffff;
+      }
+
+      .btn-close-modal {
+        background: #666666;
+        color: #ffffff;
+      }
+
+      /* PRINTABLE SLIP FORMATTING */
+      #pdfSlipContent {
+        color: #000000 !important;
+        background-color: #ffffff !important;
+      }
+
+      #pdfSlipContent * {
+        color: #000000 !important;
+      }
+
+      #pdfSlipContent h2 {
+        color: #0052cc !important;
+        margin: 0 0 4px 0;
+        font-size: 22px;
+      }
+
+      #pdfSlipContent p {
+        margin: 4px 0;
+        font-size: 13px;
+      }
+
+      .slip-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+
+      .slip-table th, 
+      .slip-table td {
+        border: 1px solid #111111 !important;
+        padding: 8px 10px;
+        text-align: left;
+        font-size: 13px;
+      }
+
+      .slip-table th {
+        background-color: #f0f0f0 !important;
+        font-weight: bold;
+      }
+
+      /* PRINT MEDIA STYLES (BLANK PAGE FIX FOR DIRECT PRINT) */
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        #pdfSlipContent, #pdfSlipContent * {
+          visibility: visible;
+        }
+        #pdfSlipContent {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          padding: 20px;
+          background: #ffffff !important;
+        }
+        .modal-overlay, .modal-content {
+          background: transparent !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+        .modal-close-btn, .modal-actions {
+          display: none !important;
+        }
+      }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- MAIN NAVIGATION BAR -->
+    <nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-2 sm:gap-3">
+                        <img src="images/logo.png" alt="DPS Computer Care Logo" class="h-8 sm:h-10 w-auto object-contain bg-white/10 rounded p-1 border border-slate-700">
+                        <span class="text-lg sm:text-xl font-bold tracking-wide text-blue-500">
+                            DPS <span class="text-white">Computer Care</span>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-2 lg:space-x-4">
+                        <a href="index.html" class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium">HOME</a>
+
+                        <!-- SERVICES -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                SERVICES <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-60 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block transition-all duration-200">
+                                <span class="block px-4 py-1 text-xs font-semibold text-gray-400 uppercase">Service Details</span>
+                                <a href="service-normal-laptop.html" class="block px-6 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Normal Laptop Full Service</a>
+                                <a href="service-gaming-laptop.html" class="block px-6 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Gaming Laptop Full Service</a>
+                                <hr class="my-1 border-gray-100">
+                                <a href="service-charges.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600 font-medium">Service Charges</a>
+                                <a href="uoj-discount.html" class="block px-6 py-2 text-sm text-amber-600 hover:bg-amber-50 font-semibold">UOJ Student Discount</a>
+                                <hr class="my-1 border-gray-100">
+                                <a href="knowledge-center.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Knowledge Center</a>
+                            </div>
+                        </div>
+
+                        <!-- QUOTATION -->
+                        <div class="relative group">
+                            <button class="bg-slate-800 px-3 py-2 rounded-md text-sm font-medium text-blue-400 flex items-center gap-1">
+                                QUOTATION <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-56 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="get-quote.html" class="block px-4 py-2 text-sm bg-blue-50 text-blue-600 font-semibold">Get Quote (Calculator)</a>
+                                <a href="book-repair.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Book a Repair</a>
+                            </div>
+                        </div>
+
+                        <!-- PRODUCTS -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                PRODUCTS <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-64 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="products.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Thermal Solutions & Accessories</a>
+                            </div>
+                        </div>
+
+                        <!-- GALLERY -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                GALLERY <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-48 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="gallery.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Photo Gallery</a>
+                                <a href="videos.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Video Library</a>
+                            </div>
+                        </div>
+
+                        <!-- CONTACT -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                CONTACT <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute right-0 mt-0 w-48 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="about.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">About Us</a>
+                                <a href="contact.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Contact Us</a>
+                                <a href="faq.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">FAQ</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="hidden md:block">
+                    <a href="https://wa.me/94717301589" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
+                    </a>
+                </div>
+
+                <div class="flex md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 px-4 pt-2 pb-4 space-y-2 border-t border-slate-700">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Home</a>
+            <a href="get-quote.html" class="block px-3 py-2 rounded-md text-base font-medium text-blue-400 bg-slate-900">Instant Quotation Calculator</a>
+            <a href="book-repair.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Book a Repair</a>
+            <a href="uoj-discount.html" class="block px-3 py-2 rounded-md text-base font-medium text-amber-400 hover:bg-slate-700">UOJ Student Discount</a>
+            <a href="products.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Products & Thermal Solutions</a>
+            <a href="gallery.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Gallery & Videos</a>
+            <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">About Us</a>
+            <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Contact Us</a>
+            <a href="https://wa.me/94717301589" target="_blank" class="w-full mt-2 bg-green-600 text-white px-4 py-2 rounded-md text-center font-semibold flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- MAIN CALCULATOR CONTAINER -->
+    <main class="py-10 px-2 sm:px-4">
+        <div class="calculator-container">
+          <div class="calc-header">
+            <h2>📄 Instant Quotation Calculator</h2>
+            <p>DPS Computer Care - Service Charges Estimator</p>
+          </div>
+
+          <!-- Student Discount Toggle -->
+          <label class="student-toggle-box">
+            <span class="student-toggle-label">🎓 I am a UOJ Student (Apply Special Discount)</span>
+            <input type="checkbox" id="studentCheck" onchange="updateCalculator()">
+          </label>
+
+          <!-- Customer Contact Info -->
+          <div class="section-title">1. Your Info (Quotation PDF එක සඳහා)</div>
+          <div class="customer-input-group">
+            <input type="text" id="custName" placeholder="Your Name / නම">
+            <input type="text" id="custPhone" placeholder="Phone / WhatsApp Number">
+          </div>
+
+          <!-- 2. FULL SERVICE PACKAGES -->
+          <div class="section-title">2. Full Service Package (Select One Option)</div>
+
+          <label class="item-row">
+            <div class="item-left">
+              <input type="radio" name="full_service_type" id="fs_none" value="none" checked onchange="toggleFS(); updateCalculator();">
+              <span class="item-title">No Full Service Required</span>
+            </div>
+            <span class="item-price">Rs. 0</span>
+          </label>
+          
+          <label class="item-row">
+            <div class="item-left">
+              <input type="radio" name="full_service_type" id="fs_normal" value="normal" onchange="toggleFS(); updateCalculator();">
+              <span class="item-title">Normal Laptop Full Service (Full Cleaning & HY510)</span>
+            </div>
+            <span class="item-price" id="prc_normal_fs">Rs. 2,800</span>
+          </label>
+          <div class="sub-options" id="normal_sub_box" style="display:none;">
+            <div class="sub-title">⚡ Premium Thermal Paste Upgrade:</div>
+            <label class="item-row">
+              <div class="item-left">
+                <input type="radio" name="normal_paste" value="hy510" checked onchange="updateCalculator()">
+                <span class="item-title">HY510 (Default Included)</span>
+              </div>
+              <span class="item-price">Rs. 0</span>
+            </label>
+            <label class="item-row">
+              <div class="item-left">
+                <input type="radio" name="normal_paste" id="paste_mx4" value="mx4" onchange="updateCalculator()">
+                <span class="item-title">Arctic MX-4 Upgrade</span>
+              </div>
+              <span class="item-price" id="prc_mx4">+Rs. 250</span>
+            </label>
+            <label class="item-row">
+              <div class="item-left">
+                <input type="radio" name="normal_paste" id="paste_mx6" value="mx6" onchange="updateCalculator()">
+                <span class="item-title">Arctic MX-6 Upgrade</span>
+              </div>
+              <span class="item-price" id="prc_mx6">+Rs. 500</span>
+            </label>
+          </div>
+
+          <label class="item-row">
+            <div class="item-left">
+              <input type="radio" name="full_service_type" id="fs_gaming" value="gaming" onchange="toggleFS(); updateCalculator();">
+              <span class="item-title">Gaming Laptop Full Service (Full Cleaning & Arctic MX-4)</span>
+            </div>
+            <span class="item-price" id="prc_gaming_fs">Rs. 3,500</span>
+          </label>
+          <div class="sub-options" id="gaming_sub_box" style="display:none;">
+            <div class="sub-title">⚡ Thermal Paste Upgrade:</div>
+            <label class="item-row">
+              <div class="item-left">
+                <input type="radio" name="gaming_paste" value="mx4" checked onchange="updateCalculator()">
+                <span class="item-title">Arctic MX-4 (Default Included)</span>
+              </div>
+              <span class="item-price">Rs. 0</span>
+            </label>
+            <label class="item-row">
+              <div class="item-left">
+                <input type="radio" name="gaming_paste" id="g_paste_mx6" value="g_mx6" onchange="updateCalculator()">
+                <span class="item-title">Arctic MX-6 Upgrade</span>
+              </div>
+              <span class="item-price" id="prc_g_mx6">+Rs. 800</span>
+            </label>
+
+            <div class="sub-title" style="margin-top:12px;">⚙️ VRAM / VRM MOSFETs Thermal Putty (Select One Optional):</div>
+            <label class="item-row">
+              <div class="item-left">
+                <input type="radio" name="gaming_putty" value="none" checked onchange="updateCalculator()">
+                <span class="item-title">No Thermal Putty Needed</span>
+              </div>
+              <span class="item-price">Rs. 0</span>
+            </label>
+            <label class="item-row">
+              <div class="item-left">
+                <input type="radio" name="gaming_putty" id="putty_hy204" value="hy204" onchange="updateCalculator()">
+                <span class="item-title">HY204 Thermal Putty Application</span>
+              </div>
+              <span class="item-price" id="prc_hy204">Rs. 1,000 - 1,500</span>
+            </label>
+            <label class="item-row">
+              <div class="item-left">
+                <input type="radio" name="gaming_putty" id="putty_utp8" value="utp8" onchange="updateCalculator()">
+                <span class="item-title">Upsiren UTP-8 Thermal Putty Application</span>
+              </div>
+              <span class="item-price" id="prc_utp8">Rs. 1,500 - 2,500</span>
+            </label>
+          </div>
+
+          <!-- 3. COMPONENT REPAIRS & SOFTWARE SERVICES -->
+          <div class="section-title">3. Component Repair & Software Services</div>
+          <div id="component_services_container"></div>
+
+          <!-- LIVE SUMMARY BOX -->
+          <div class="summary-box">
+            <div class="summary-title">Selected Services & Quotation Breakdown</div>
+            <ul class="selected-list" id="summaryList">
+              <li style="color:var(--text-muted);">තවමත් සේවාවන් තෝරා නොමැත.</li>
+            </ul>
+
+            <div class="grand-total-row">
+              <span>Estimated Total:</span>
+              <span class="grand-total-price" id="grandTotalDisplay">Rs. 0</span>
+            </div>
+
+            <div class="note-box">
+              🛑 <b>සැලකිය යුතුයි:</b> ඉහත ගාස්තු සේවා/ශ්‍රම ගාස්තු (Labor Costs) වේ. Replacement Parts (Screen, Keyboard, Battery, RAM/SSD) සඳහා අමතර ගාස්තු අයවේ.
+            </div>
+          </div>
+
+          <!-- ACTION BUTTONS -->
+          <div class="action-buttons-grid">
+            <button type="button" class="btn-action-main btn-download-pdf" onclick="openPDFPreview()">
+              🔍 Preview / Download Quotation PDF
+            </button>
+            <button type="button" class="btn-action-main btn-book-now" onclick="proceedToBooking()">
+              📅 Book Repair With Quotation →
+            </button>
+          </div>
+
+        </div>
+    </main>
+
+    <!-- PREVIEW MODAL OVERLAY -->
+    <div class="modal-overlay" id="previewModal">
+      <div class="modal-content">
+        <button class="modal-close-btn" onclick="closePreviewModal()">✖ Close</button>
+        
+        <div id="pdfSlipContent">
+          <h2>DPS Computer Care</h2>
+          <p style="margin-bottom:12px; font-weight:bold;">Official Service Charge Estimate / Quotation</p>
+          <hr style="border:none; border-top:1px solid #111; margin-bottom:12px;">
+          
+          <p><strong>Customer Name:</strong> <span id="pdfName">Valued Customer</span></p>
+          <p><strong>Contact Number:</strong> <span id="pdfPhone">N/A</span></p>
+          <p><strong>UOJ Student Status:</strong> <span id="pdfStudent">No</span></p>
+          <p><strong>Date:</strong> <span id="pdfDate"></span></p>
+
+          <table class="slip-table">
+            <thead>
+              <tr>
+                <th>Service Description</th>
+                <th style="text-align:right;">Estimated Price</th>
+              </tr>
+            </thead>
+            <tbody id="pdfTableBody">
+            </tbody>
+            <tfoot>
+              <tr>
+                <th style="text-align:right;">Total Estimated Amount:</th>
+                <th style="text-align:right;" id="pdfTotalAmount">Rs. 0</th>
+              </tr>
+            </tfoot>
+          </table>
+
+          <p style="margin-top:20px; font-size:11px; font-style:italic;">
+            * Note: This estimation covers service charges and labor costs only. Replacement hardware components (if required) will be charged separately.
+          </p>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn-modal-action btn-close-modal" onclick="closePreviewModal()">Cancel</button>
+          <button class="btn-modal-action btn-print-download" onclick="downloadPDFFromPreview()">📥 Download / Save PDF</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-gray-300 py-10 mt-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <img src="images/logo.png" alt="DPS Computer Care Logo" class="h-9 w-auto object-contain bg-white/10 rounded p-1 border border-slate-700">
+                    <h3 class="text-white font-bold text-lg tracking-wide">DPS Computer Care</h3>
+                </div>
+                <p class="text-sm text-gray-400">Professional Laptop & Computer Repair Services with Guaranteed Quality.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="get-quote.html" class="hover:text-blue-400">Get Instant Quote</a></li>
+                    <li><a href="uoj-discount.html" class="hover:text-amber-400">UOJ Student Discount</a></li>
+                    <li><a href="book-repair.html" class="hover:text-blue-400">Book Repair</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Services</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="service-normal-laptop.html" class="hover:text-blue-400">Normal Laptop Service</a></li>
+                    <li><a href="service-gaming-laptop.html" class="hover:text-blue-400">Gaming Laptop Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Contact Us</h4>
+                <p class="text-sm"><i class="fa-solid fa-location-dot me-2 text-blue-500"></i>Jaffna / Sri Lanka</p>
+                <p class="text-sm mt-2"><i class="fa-solid fa-phone me-2 text-blue-500"></i>+94 71 730 1589</p>
+                <p class="text-sm mt-2"><i class="fa-solid fa-envelope me-2 text-blue-500"></i>dpscomputercare@gmail.com</p>
+            </div>
+        </div>
+        <div class="text-center text-xs text-gray-500 mt-8 pt-4 border-t border-slate-800">
+            © 2026 DPS Computer Care. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- CALCULATOR JAVASCRIPT -->
+    <script>
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    const componentsData = [
+      { id: "win_os", name: "Windows OS Installation (Win 10/11 + Drivers + Apps)", stdStd: 1500, stdFs: 1000, uojStd: 1000, uojFs: 800 },
+      { id: "data_bak", name: "Basic Data Backup & Recovery (C-Drive Data)", stdStd: 1000, stdFs: 500, uojStd: 800, uojFs: 400 },
+      { id: "ram_ssd", name: "RAM / SSD / HDD Upgrade & Installation", stdStd: 1000, stdFs: 0, uojStd: 750, uojFs: 0 },
+      { id: "battery", name: "Internal Battery Replacement", stdStd: 1000, stdFs: 0, uojStd: 750, uojFs: 0 },
+      { id: "wifi", name: "Wi-Fi Card Replacement", stdStd: 1000, stdFs: 0, uojStd: 750, uojFs: 0 },
+      { id: "fan", name: "Cooling Fan Replacement", stdStd: 1000, stdFs: 0, uojStd: 750, uojFs: 0 },
+      { id: "speaker", name: "Internal Speaker Replacement", stdStd: 1000, stdFs: 0, uojStd: 750, uojFs: 0 },
+      { id: "dc_cable", name: "DC Jack Cable Type Replacement", stdStd: 1000, stdFs: 0, uojStd: 750, uojFs: 0 },
+      { id: "dc_hole", name: "Through-Hole DC Jack Replacement", stdStd: 3000, stdFs: 2000, uojStd: 2500, uojFs: 1750 },
+      { id: "screen", name: "Laptop Screen (LCD/LED) Replacement", stdStd: 2000, stdFs: 1000, uojStd: 1500, uojFs: 750 },
+      { id: "keyboard", name: "Keyboard Replacement", stdStd: 2000, stdFs: 1000, uojStd: 1500, uojFs: 750 },
+      { id: "hinge_1", name: "One Hinge Repair / Fabrication", stdStd: 3000, stdFs: 2000, uojStd: 2500, uojFs: 1500 },
+      { id: "hinge_2", name: "Both Hinges Repair / Fabrication", stdStd: 4500, stdFs: 3500, uojStd: 3500, uojFs: 2500 }
+    ];
+
+    let globalSelectedItems = [];
+    let globalTotalDisplay = "Rs. 0";
+
+    function initComponentRows() {
+      const container = document.getElementById("component_services_container");
+      container.innerHTML = "";
+      componentsData.forEach(comp => {
+        container.innerHTML += `
+          <label class="item-row">
+            <div class="item-left">
+              <input type="checkbox" id="${comp.id}" class="calc-check comp-check" onchange="updateCalculator()">
+              <span class="item-title">${comp.name}</span>
+            </div>
+            <span class="item-price" id="prc_${comp.id}">Rs. ${comp.stdStd.toLocaleString()}</span>
+          </label>
+        `;
+      });
+    }
+
+    function toggleFS() {
+      const fsType = document.querySelector('input[name="full_service_type"]:checked').value;
+      document.getElementById("normal_sub_box").style.display = (fsType === 'normal') ? 'block' : 'none';
+      document.getElementById("gaming_sub_box").style.display = (fsType === 'gaming') ? 'block' : 'none';
+    }
+
+    function removeService(elementId) {
+      if (elementId === 'fs_package') {
+        document.getElementById("fs_none").checked = true;
+        toggleFS();
+      } else {
+        document.getElementById(elementId).checked = false;
+      }
+      updateCalculator();
+    }
+
+    function updateCalculator() {
+      const isUOJ = document.getElementById("studentCheck").checked;
+      const fsType = document.querySelector('input[name="full_service_type"]:checked').value;
+      const hasFullService = (fsType === 'normal' || fsType === 'gaming');
+
+      document.getElementById("prc_normal_fs").innerText = isUOJ ? "Rs. 2,300" : "Rs. 2,800";
+      document.getElementById("prc_gaming_fs").innerText = isUOJ ? "Rs. 3,000" : "Rs. 3,500";
+      document.getElementById("prc_mx4").innerText = isUOJ ? "+Rs. 200" : "+Rs. 250";
+      document.getElementById("prc_mx6").innerText = isUOJ ? "+Rs. 400" : "+Rs. 500";
+      document.getElementById("prc_g_mx6").innerText = isUOJ ? "+Rs. 600" : "+Rs. 800";
+      document.getElementById("prc_hy204").innerText = isUOJ ? "Rs. 800 - 1,500" : "Rs. 1,000 - 1,500";
+      document.getElementById("prc_utp8").innerText = isUOJ ? "Rs. 1,200 - 2,000" : "Rs. 1,500 - 2,500";
+
+      componentsData.forEach(c => {
+        let price = isUOJ ? (hasFullService ? c.uojFs : c.uojStd) : (hasFullService ? c.stdFs : c.stdStd);
+        document.getElementById(`prc_${c.id}`).innerText = price === 0 ? "FREE 💯" : `Rs. ${price.toLocaleString()}`;
+      });
+
+      let totalMin = 0;
+      let totalMax = 0;
+      let hasRange = false;
+      globalSelectedItems = [];
+
+      if (fsType === 'normal') {
+        let base = isUOJ ? 2300 : 2800;
+        let name = "Normal Laptop Full Service";
+        let radioP = document.querySelector('input[name="normal_paste"]:checked').value;
+        if (radioP === 'mx4') { base += isUOJ ? 200 : 250; name += " (+ Arctic MX-4)"; }
+        if (radioP === 'mx6') { base += isUOJ ? 400 : 500; name += " (+ Arctic MX-6)"; }
+        totalMin += base; totalMax += base;
+        globalSelectedItems.push({ id: 'fs_package', name: name, price: `Rs. ${base.toLocaleString()}` });
+      } else if (fsType === 'gaming') {
+        let base = isUOJ ? 3000 : 3500;
+        let name = "Gaming Laptop Full Service";
+        let radioP = document.querySelector('input[name="gaming_paste"]:checked').value;
+        if (radioP === 'g_mx6') { base += isUOJ ? 600 : 800; name += " (+ Arctic MX-6)"; }
+        
+        let puttyRadio = document.querySelector('input[name="gaming_putty"]:checked').value;
+        let puttyMin = 0, puttyMax = 0;
+        if (puttyRadio === 'hy204') {
+          puttyMin = isUOJ ? 800 : 1000; puttyMax = 1500;
+          name += " + HY204 Putty";
+        } else if (puttyRadio === 'utp8') {
+          puttyMin = isUOJ ? 1200 : 1500; puttyMax = isUOJ ? 2000 : 2500;
+          name += " + Upsiren UTP-8 Putty";
+        }
+
+        if (puttyRadio !== 'none') {
+          hasRange = true;
+          totalMin += (base + puttyMin);
+          totalMax += (base + puttyMax);
+          globalSelectedItems.push({ id: 'fs_package', name: name, price: `Rs. ${(base + puttyMin).toLocaleString()} - ${(base + puttyMax).toLocaleString()}` });
+        } else {
+          totalMin += base; totalMax += base;
+          globalSelectedItems.push({ id: 'fs_package', name: name, price: `Rs. ${base.toLocaleString()}` });
+        }
+      }
+
+      componentsData.forEach(c => {
+        if (document.getElementById(c.id).checked) {
+          let price = isUOJ ? (hasFullService ? c.uojFs : c.uojStd) : (hasFullService ? c.stdFs : c.stdStd);
+          totalMin += price; totalMax += price;
+          globalSelectedItems.push({ id: c.id, name: c.name, price: price === 0 ? "FREE 💯" : `Rs. ${price.toLocaleString()}` });
+        }
+      });
+
+      const list = document.getElementById("summaryList");
+      list.innerHTML = "";
+
+      if (globalSelectedItems.length === 0) {
+        list.innerHTML = `<li style="color:var(--text-muted);">තවමත් සේවාවන් තෝරා නොමැත.</li>`;
+        globalTotalDisplay = "Rs. 0";
+        document.getElementById("grandTotalDisplay").innerText = globalTotalDisplay;
+      } else {
+        globalSelectedItems.forEach(item => {
+          list.innerHTML += `
+            <li>
+              <span>${item.name}</span>
+              <span><b>${item.price}</b> <span class="remove-btn" onclick="removeService('${item.id}')">✖</span></span>
+            </li>
+          `;
+        });
+
+        if (hasRange) {
+          globalTotalDisplay = `Rs. ${totalMin.toLocaleString()} - ${totalMax.toLocaleString()}`;
+        } else {
+          globalTotalDisplay = `Rs. ${totalMin.toLocaleString()}`;
+        }
+        document.getElementById("grandTotalDisplay").innerText = globalTotalDisplay;
+      }
+    }
+
+    // OPEN PREVIEW MODAL
+    function openPDFPreview() {
+      if (globalSelectedItems.length === 0) {
+        alert("කරුණාකර Quotation Preview එක ලබාගැනීමට අවම වශයෙන් එක් සේවාවක්වත් තෝරන්න.");
+        return;
+      }
+
+      const nameInput = document.getElementById("custName").value.trim() || "Valued Customer";
+      const phoneInput = document.getElementById("custPhone").value.trim() || "N/A";
+      const isUOJ = document.getElementById("studentCheck").checked ? "Yes (UOJ Student)" : "No";
+
+      document.getElementById("pdfName").innerText = nameInput;
+      document.getElementById("pdfPhone").innerText = phoneInput;
+      document.getElementById("pdfStudent").innerText = isUOJ;
+      document.getElementById("pdfDate").innerText = new Date().toLocaleDateString();
+
+      const tbody = document.getElementById("pdfTableBody");
+      tbody.innerHTML = "";
+      globalSelectedItems.forEach(item => {
+        tbody.innerHTML += `<tr><td>${item.name}</td><td style="text-align:right; font-weight:bold;">${item.price}</td></tr>`;
+      });
+      document.getElementById("pdfTotalAmount").innerText = globalTotalDisplay;
+
+      document.getElementById("previewModal").style.display = "block";
+    }
+
+    function closePreviewModal() {
+      document.getElementById("previewModal").style.display = "none";
+    }
+
+    // RELIABLE PRINT/SAVE AS PDF FUNCTION (FIXES BLANK PAGE ISSUES)
+    function downloadPDFFromPreview() {
+      window.print();
+    }
+
+    // REDIRECT TO BOOKING PAGE
+    function proceedToBooking() {
+      if (globalSelectedItems.length === 0) {
+        alert("කරුණාකර Book කිරීමට ප්‍රථම අවම වශයෙන් එක් සේවාවක්වත් තෝරන්න.");
+        return;
+      }
+
+      let serviceSummary = globalSelectedItems.map(i => `${i.name} (${i.price})`).join(", ");
+      let total = globalTotalDisplay;
+      let isUOJ = document.getElementById("studentCheck").checked ? "UOJ Student" : "Standard";
+
+      let bookingUrl = "book-repair.html" +
+                       "?services=" + encodeURIComponent(serviceSummary) +
+                       "&total=" + encodeURIComponent(total) +
+                       "&type=" + encodeURIComponent(isUOJ);
+
+      window.location.href = bookingUrl;
+    }
+
+    initComponentRows();
+    </script>
+</body>
+</html>

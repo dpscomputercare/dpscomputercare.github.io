@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPS Computer Care | Professional Tech Solutions & Laptop Repair</title>
+	
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+	
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Smooth transition for slider */
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- MAIN NAVIGATION BAR -->
+    <nav class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- Brand Logo & Name -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-2 sm:gap-3">
+                        <img src="images/logo.png" alt="DPS Computer Care Logo" class="h-8 sm:h-10 w-auto object-contain bg-white/10 rounded p-1 border border-slate-700">
+                        <span class="text-lg sm:text-xl font-bold tracking-wide text-blue-500">
+                            DPS <span class="text-white">Computer Care</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-2 lg:space-x-4">
+                        <a href="index.html" class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium text-blue-400">HOME</a>
+
+                        <!-- SERVICES (Dropdown) -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                SERVICES <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-60 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block transition-all duration-200">
+                                <span class="block px-4 py-1 text-xs font-semibold text-gray-400 uppercase">Service Details</span>
+                                <a href="service-normal-laptop.html" class="block px-6 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Normal Laptop Full Service</a>
+                                <a href="service-gaming-laptop.html" class="block px-6 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Gaming Laptop Full Service</a>
+                                <hr class="my-1 border-gray-100">
+                                <a href="service-charges.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600 font-medium">Service Charges</a>
+                                <a href="uoj-discount.html" class="block px-6 py-2 text-sm text-amber-600 hover:bg-amber-50 font-semibold">UOJ Student Discount</a>
+                                <hr class="my-1 border-gray-100">
+                                <a href="knowledge-center.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Knowledge Center</a>
+                            </div>
+                        </div>
+
+                        <!-- INSTANT QUOTATION -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                QUOTATION <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-56 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="get-quote.html" class="block px-4 py-2 text-sm hover:bg-blue-50 text-blue-600 font-semibold">Get Quote (Calculator)</a>
+                                <a href="book-repair.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Book a Repair</a>
+                            </div>
+                        </div>
+
+                        <!-- PRODUCTS -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                PRODUCTS <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-64 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="products.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Thermal Solutions & Accessories</a>
+                            </div>
+                        </div>
+
+                        <!-- GALLERY & VIDEOS -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                GALLERY <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute left-0 mt-0 w-48 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="gallery.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Photo Gallery</a>
+                                <a href="videos.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Video Library</a>
+                            </div>
+                        </div>
+
+                        <!-- ABOUT & CONTACT -->
+                        <div class="relative group">
+                            <button class="hover:bg-slate-800 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
+                                CONTACT <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </button>
+                            <div class="absolute right-0 mt-0 w-48 bg-white text-gray-800 rounded-md shadow-lg py-2 hidden group-hover:block">
+                                <a href="about.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">About Us</a>
+                                <a href="contact.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">Contact Us</a>
+                                <a href="faq.html" class="block px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600">FAQ</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- WhatsApp Button (Desktop) -->
+                <div class="hidden md:block">
+                    <a href="https://wa.me/94717301589" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 px-4 pt-2 pb-4 space-y-2 border-t border-slate-700">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-blue-400">Home</a>
+            <a href="service-normal-laptop.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Services & Laptop Care</a>
+            <a href="get-quote.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Instant Quotation Calculator</a>
+            <a href="uoj-discount.html" class="block px-3 py-2 rounded-md text-base font-medium text-amber-400 hover:bg-slate-700">UOJ Student Discount</a>
+            <a href="products.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Products & Thermal Solutions</a>
+            <a href="gallery.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Gallery & Videos</a>
+            <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">About Us</a>
+            <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-slate-700">Contact Us</a>
+            <a href="https://wa.me/94717301589" target="_blank" class="w-full mt-2 bg-green-600 text-white px-4 py-2 rounded-md text-center font-semibold flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- CONTENT AREA -->
+    <main id="main-content">
+
+        <!-- HERO IMAGE SLIDER SECTION -->
+        <div class="relative w-full h-[350px] sm:h-[450px] lg:h-[500px] overflow-hidden bg-slate-900 shadow-lg">
+            
+            <!-- Slide 1 -->
+            <div class="slide active absolute inset-0 transition-opacity duration-700">
+                <img src="images/slide1.png" alt="Laptop Repair Service" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-3 drop-shadow-md">Professional Laptop & PC Repair</h1>
+                    <p class="text-sm sm:text-lg text-gray-200 max-w-2xl mb-6">Expert diagnostic, chip-level repair, and full maintenance services in Sri Lanka.</p>
+                    <a href="get-quote.html" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-all">Get Instant Quotation</a>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide absolute inset-0 transition-opacity duration-700">
+                <img src="images/slide2.png" alt="Gaming Laptop Full Service" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-3 drop-shadow-md">High-Performance Gaming Laptop Care</h1>
+                    <p class="text-sm sm:text-lg text-gray-200 max-w-2xl mb-6">Advanced thermal paste replacement, deep dust cleaning, and cooling optimization.</p>
+                    <a href="service-gaming-laptop.html" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-all">Explore Gaming Service</a>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide absolute inset-0 transition-opacity duration-700">
+                <img src="images/slide3.png" alt="UOJ Student Discount" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-3 drop-shadow-md">Special UOJ Student Discount</h1>
+                    <p class="text-sm sm:text-lg text-gray-200 max-w-2xl mb-6">Exclusive repair discounts and reliable tech support for University of Jaffna students.</p>
+                    <a href="uoj-discount.html" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-6 py-3 rounded-lg shadow-lg transition-all">View Student Offers</a>
+                </div>
+            </div>
+
+            <!-- Slider Controls / Dots -->
+            <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+                <button onclick="currentSlide(0)" class="dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all"></button>
+                <button onclick="currentSlide(1)" class="dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all"></button>
+                <button onclick="currentSlide(2)" class="dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all"></button>
+            </div>
+        </div>
+
+        <!-- QUICK FEATURES SECTION -->
+        <section class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-start gap-4">
+                    <div class="text-blue-600 text-3xl"><i class="fa-solid fa-laptop-medical"></i></div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1">Expert Diagnosis</h3>
+                        <p class="text-sm text-gray-600">Accurate fault detection and transparent repair solutions for all brands.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-start gap-4">
+                    <div class="text-amber-500 text-3xl"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1">UOJ Student Friendly</h3>
+                        <p class="text-sm text-gray-600">Special service rates and discounts designed for university students.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-start gap-4">
+                    <div class="text-green-600 text-3xl"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1">Fast Turnaround</h3>
+                        <p class="text-sm text-gray-600">Prompt service and updates so you never miss your workflow.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-gray-300 py-10 mt-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <img src="images/logo.png" alt="DPS Computer Care Logo" class="h-9 w-auto object-contain bg-white/10 rounded p-1 border border-slate-700">
+                    <h3 class="text-white font-bold text-lg tracking-wide">DPS Computer Care</h3>
+                </div>
+                <p class="text-sm text-gray-400">Professional Laptop & Computer Repair Services with Guaranteed Quality.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="get-quote.html" class="hover:text-blue-400">Get Instant Quote</a></li>
+                    <li><a href="uoj-discount.html" class="hover:text-amber-400">UOJ Student Discount</a></li>
+                    <li><a href="book-repair.html" class="hover:text-blue-400">Book Repair</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Services</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="service-normal-laptop.html" class="hover:text-blue-400">Normal Laptop Service</a></li>
+                    <li><a href="service-gaming-laptop.html" class="hover:text-blue-400">Gaming Laptop Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">Contact Us</h4>
+                <p class="text-sm"><i class="fa-solid fa-location-dot me-2 text-blue-500"></i>Jaffna / Sri Lanka</p>
+                <p class="text-sm mt-2"><i class="fa-solid fa-phone me-2 text-blue-500"></i>+94 71 730 1589</p>
+				<p class="text-sm mt-2"><i class="fa-solid fa-envelope me-2 text-blue-500"></i>dpscomputercare@gmail.com</p>
+            </div>
+        </div>
+        <div class="text-center text-xs text-gray-500 mt-8 pt-4 border-t border-slate-800">
+            © 2026 DPS Computer Care. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR MOBILE MENU & IMAGE SLIDER -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Image Slider Script
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlides() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                dots[index].classList.remove('bg-white');
+                dots[index].classList.add('bg-white/50');
+            });
+
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+
+            slides[slideIndex - 1].classList.add('active');
+            dots[slideIndex - 1].classList.remove('bg-white/50');
+            dots[slideIndex - 1].classList.add('bg-white');
+
+            setTimeout(showSlides, 4000); // Change image every 4 seconds
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                dots[index].classList.remove('bg-white');
+                dots[index].classList.add('bg-white/50');
+            });
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.remove('bg-white/50');
+            dots[slideIndex].classList.add('bg-white');
+        }
+
+        // Start slider automatically
+        setTimeout(showSlides, 4000);
+        // Set initial dot active
+        dots[0].classList.remove('bg-white/50');
+        dots[0].classList.add('bg-white');
+    </script>
+
+</body>
+</html>

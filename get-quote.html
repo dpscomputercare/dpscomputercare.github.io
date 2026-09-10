@@ -914,7 +914,7 @@
       const fsType = document.querySelector('input[name="full_service_type"]:checked').value;
       const hasFullService = (fsType === 'normal' || fsType === 'gaming');
 
-      document.getElementById("prc_normal_fs").innerText = isUOJ ? "Rs. 2,300" : "Rs. 2,800";
+      document.getElementById("prc_normal_fs").innerText = isUOJ ? "Rs. 2,200" : "Rs. 2,800";
       document.getElementById("prc_gaming_fs").innerText = isUOJ ? "Rs. 3,000" : "Rs. 3,500";
       document.getElementById("prc_mx4").innerText = isUOJ ? "+Rs. 400" : "+Rs. 400";
       document.getElementById("prc_mx6").innerText = isUOJ ? "+Rs. 800" : "+Rs. 800";
@@ -933,7 +933,7 @@
       globalSelectedItems = [];
 
       if (fsType === 'normal') {
-        let base = isUOJ ? 2300 : 2800;
+        let base = isUOJ ? 2200 : 2800;
         let name = "Normal Laptop Full Service";
         let radioP = document.querySelector('input[name="normal_paste"]:checked').value;
         if (radioP === 'mx4') { base += isUOJ ? 400 : 400; name += " (+ Arctic MX-4)"; }
